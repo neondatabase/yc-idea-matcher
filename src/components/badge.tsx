@@ -1,12 +1,12 @@
 import { cn } from '~/utils';
 
-export type Status = 'Public' | 'Active' | 'Acquired' | 'Not YC' | 'Inactive';
+export type Status = 'Public' | 'Active' | 'Acquired' | 'Inactive';
 
 type Props = {
   status: Status;
 };
 export const Badge = ({ status }: Props) => {
-  const styles = {
+  const styles: Record<Status, { text: string; className: string }> = {
     Public: {
       text: 'Public',
       className: 'text-indigo-1100 border-indigo-700',
