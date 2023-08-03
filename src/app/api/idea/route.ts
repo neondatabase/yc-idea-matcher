@@ -1,9 +1,11 @@
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
-import { Pool } from '@neondatabase/serverless';
+import { neon, neonConfig } from '@neondatabase/serverless';
 import { NextRequest, NextResponse } from 'next/server';
 import { generateEmbeddings } from '~/utils';
 import { z } from 'zod';
+
+neonConfig.fetchConnectionCache = true;
 
 export const runtime = 'edge';
 
@@ -13,11 +15,9 @@ const ratelimit = new Ratelimit({
   limiter: Ratelimit.slidingWindow(2, '5s'),
 });
 
+const sql = neon(process.env.DATABASE_URL!);
+
 export async function POST(request: NextRequest) {
-  const client = new Pool({ connectionString: process.env.DATABASE_URL });
-
-  await client.connect();
-
   const id = request.ip ?? 'anonymous';
   const limit = await ratelimit.limit(id ?? 'anonymous');
 
@@ -49,11 +49,15 @@ export async function POST(request: NextRequest) {
 
   const { idea } = validated.data;
 
-  const embedding = await generateEmbeddings(idea);
+  try {
+    const embedding = await generateEmbeddings(idea);
 
-  const { rows } = await client.query(
-    `SELECT id, name, "smallLogoUrl", website, "oneLiner", "longDescription", batch, url, status, industries FROM companies ORDER BY embedding <-> array[${embedding}] LIMIT 5;`
-  );
+    const result = await sql(
+      `SELECT id, name, "smallLogoUrl", website, "oneLiner", "longDescription", batch, url, status, industries FROM companies ORDER BY embedding <-> array[${embedding}] LIMIT 5;`
+    );
 
-  return NextResponse.json({ data: rows });
+    return NextResponse.json({ data: result });
+  } catch (error) {
+    return NextResponse.json({ error: error }, { status: 500 });
+  }
 }
