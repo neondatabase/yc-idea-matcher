@@ -7,10 +7,8 @@ import { z } from 'zod';
 
 neonConfig.fetchConnectionCache = true;
 
-export const config = {
-  runtime: 'edge',
-  regions: ['iad1'],
-};
+export const runtime = 'edge';
+export const preferredRegion = 'iad1';
 
 const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
