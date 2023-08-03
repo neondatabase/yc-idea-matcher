@@ -23,7 +23,9 @@ You will find a script called `generate-embeddings.ts` located in the root direc
 
 1. It creates the database schema and installs the `pg_embedding` extension
 2. It goes through the YCombinator API 'https://api.ycombinator.com/v0.1/companies?page=1' and gets all the companies
-3. For each company it generates embeddings using the long description and then stores the company data in the database
+3. For each company it generates embeddings using the long description and then stores the company data in the database.
+  
+> Some companies don't have a long description, so we needed to manually remove those from the database by running `delete from companies WHERE embedding = ARRAY[]::real[];`
 
 The app itself is a Next.js app with an API route located at `/api/idea`. Whenever a user submits an idea, the following happens:
 
