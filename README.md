@@ -25,8 +25,6 @@ You will find a script called `generate-embeddings.ts` located in the root direc
 2. It goes through the YCombinator API 'https://api.ycombinator.com/v0.1/companies?page=1' and gets all the companies
 3. For each company it generates embeddings using the long description and then stores the company data in the database
 
-YC has invested in 4000+ companies so this process took around ~15 mins to complete.
-
 The app itself is a Next.js app with an API route located at `/api/idea`. Whenever a user submits an idea, the following happens:
 
 1. The idea is sent to the OpenAI API to generate an embedding
