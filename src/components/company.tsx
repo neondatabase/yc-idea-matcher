@@ -5,9 +5,9 @@ export type Company = {
   name: string;
   slug: string;
   website: string;
-  smalllogourl?: string;
-  oneliner: string;
-  longdescription: string;
+  smallLogoUrl?: string;
+  oneLiner: string;
+  longDescription: string;
   teamSize: number;
   url: string;
   batch: string;
@@ -20,10 +20,10 @@ export type Company = {
 export const Company = ({
   id,
   website,
-  smalllogourl,
+  smallLogoUrl,
   name,
-  oneliner,
-  longdescription,
+  oneLiner,
+  longDescription,
   industries,
   batch,
   status,
@@ -35,10 +35,10 @@ export const Company = ({
       href={website}
     >
       <div className="flex flex-col md:flex-row gap-10">
-        {smalllogourl ? (
+        {smallLogoUrl ? (
           <img
             className="w-16 h-16 rounded-md"
-            src={smalllogourl}
+            src={smallLogoUrl}
             alt="Company logo"
           />
         ) : (
@@ -53,8 +53,8 @@ export const Company = ({
           <h2 className="text-xl md:text-2xl font-semibold text-gray-1200">
             {name}
           </h2>
-          <h3 className="text-gray-1200">{oneliner}</h3>
-          <p>{longdescription}</p>
+          <h3 className="text-gray-1200">{oneLiner}</h3>
+          <p>{longDescription}</p>
           <p className="text-sm">{batch} batch</p>
           <div className="flex flex-wrap gap-3 text-sm">
             {industries.map((industry) => (

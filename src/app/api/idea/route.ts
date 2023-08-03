@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
   const embedding = await generateEmbeddings(idea);
 
   const { rows } = await client.query(
-    `SELECT id, name, smallLogoUrl,website, oneLiner, longDescription, batch, url, status, industries FROM companies ORDER BY embedding <-> array[${embedding}] LIMIT 5;`
+    `SELECT id, name, "smallLogoUrl", website, "oneLiner", "longDescription", batch, url, status, industries FROM companies ORDER BY embedding <-> array[${embedding}] LIMIT 5;`
   );
 
   return NextResponse.json({ data: rows });
