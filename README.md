@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# YC idea matcher
 
-## Getting Started
+This project allows you to submit your idea and get a list of similar ideas that have been submitted in the past.
 
-First, run the development server:
+The project is built using the following technologies:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- [Neon](https://neon.tech): Serverless Postgres
+- [pg_embedding](https://github.com/neondatabase/pg_embedding): open-source Postgres extension for vector storage and similarity search
+- [Neon Serverless Driver](https://github.com/neondatabase/serverless)
+- [Next.js](https://nextjs.org): Fullstack framework for React
+- [Vercel](https://vercel.com): deployment platform
+- [OpenAI API](https://openai.com): generating vector embeddings
+- [TailwindCSS](https://tailwindcss.com): Utility-first CSS framework
+- [Radix UI](https://radix-ui.com): unstyled, accessible UI component library
+- [Upstash Redis](https://upstash.com): serverless Redis for rate limiting
+- [Zod](https://zod.dev): TypeScript-first schema validation
+- [React Query](https://react-query.tanstack.com): data fetching and caching library
+- [Vaul](https://vaul.emilkowal.ski/): Drawer component for React.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How the app works
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You will find a script called `generate-embeddings.ts` located in the root directory of this project. After running `npm run generate-embeddings`, the script does the following:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. It creates the database schema and installs the `pg_embedding` extension
+2. It goes through the YCombinator API 'https://api.ycombinator.com/v0.1/companies?page=1' and gets all the companies
+3. For each company it generates embeddings using the long description and then stores the company data in the database
 
-## Learn More
+YC has invested in 4000+ companies so this process took around ~15 mins to complete.
 
-To learn more about Next.js, take a look at the following resources:
+The app itself is a Next.js app with an API route located at `/api/idea`. Whenever a user submits an idea, the following happens:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. The idea is sent to the OpenAI API to generate an embedding
+2. We then use pg_embedding to retrieve the top 3 most similar ideas
