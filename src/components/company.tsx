@@ -59,7 +59,7 @@ export const Company = ({
           <div className="flex flex-wrap gap-3 text-sm">
             {industries.map((industry) => (
               <p
-                className="inline-flex items-center rounded-md border-gray-700 text-gray-1100 border px-2.5 py-0.5 text-xs font-medium"
+                className="inline-flex items-center rounded-md border-gray-700 text-gray-1100 border px-2.5 py-1 text-xs font-medium"
                 key={industry}
               >
                 {industry}

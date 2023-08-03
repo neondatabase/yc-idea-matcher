@@ -72,8 +72,8 @@ export default function Home() {
         {errors && (
           <p className="text-red-1100 mt-2 text-sm">{errors.idea?.message}</p>
         )}
-        <div className="mt-5 mb-16">
-          <div className="grid grid-cols-1 gap-5">
+        <div className="mt-10 mb-16">
+          <div className="grid grid-cols-1 gap-10">
             {isLoading ? (
               <>
                 <div className="p-5 animate-pulse h-80 rounded-md bg-gray-500" />
