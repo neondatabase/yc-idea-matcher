@@ -1,6 +1,6 @@
 # YC idea matcher
 
-This project allows you to submit your idea and get a list of similar ideas that have been submitted in the past.
+This project allows you Submit your idea and get a list of similar ideas that YCombinator has invested in in the past.
 
 The project is built using the following technologies:
 
