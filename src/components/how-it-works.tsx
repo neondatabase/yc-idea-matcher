@@ -63,7 +63,7 @@ export const HowItWorks = () => {
                 >
                   Neon
                 </a>{' '}
-                with the{' '}
+                with{' '}
                 <a
                   className="focus-visible:border-gray-700 focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-100
             transition-colors outline-none rounded-md"
@@ -71,7 +71,7 @@ export const HowItWorks = () => {
                   rel="noopener noreferrer"
                   href="https://github.com/neondatabase/pg_embedding"
                 >
-                  pg_embedding extension
+                  pg_embedding
                 </a>
                 , which makes it possible to store and retrieve vector
                 embeddings in Postgres.
