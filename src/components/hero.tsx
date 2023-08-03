@@ -10,7 +10,7 @@ export const Hero = () => {
       </h1>
       <p className="md:text-lg text-center mb-16">
         Submit your idea and get a list of similar ideas that YCombinator has
-        invested in in the past.
+        invested in before
         <HowItWorks />
       </p>
     </>

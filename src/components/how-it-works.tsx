@@ -4,14 +4,14 @@ import { Drawer } from 'vaul';
 
 export const HowItWorks = () => {
   const codeString =
-    'SELECT * FROM companies ORDER BY embedding <-> array[0.3, 0.8, -0.9] LIMIT 5';
+    'SELECT * FROM companies ORDER BY embedding <=> array[0.3, 0.8, -0.9] LIMIT 5';
 
   const [open, setOpen] = useLocalStorage('show banner', true);
 
   return (
     <Drawer.Root open={open} onOpenChange={setOpen} shouldScaleBackground>
       <Drawer.Trigger asChild>
-        <button className="underline ml-2 focus-visible:border-gray-700 focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-100 transition-colors outline-none rounded-md">
+        <button className="underline ml-2 focus-visible:border-gray-700 text-gray-1200 focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-100 transition-colors outline-none rounded-md">
           How it works
         </button>
       </Drawer.Trigger>
@@ -29,13 +29,13 @@ export const HowItWorks = () => {
                 How this app works
               </Drawer.Title>
               <p>
-                This project uses Semantic search, which is an advanced search
-                technique that aims to understand the intent and context behind
-                a search query, instead of just matching keywords.
+                This project uses semantic search, an advanced search technique
+                that aims to understand the intent and context behind a search
+                query instead of just matching keywords.
               </p>
               <p>
                 The first step was to collect company data from the YCombinator
-                public API{' '}
+                public API:{' '}
                 <a
                   className="focus-visible:border-gray-700 focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-100
             transition-colors outline-none rounded-md"
@@ -48,7 +48,7 @@ export const HowItWorks = () => {
               </p>
               <p>
                 Next, for each company description we generated an embedding,
-                which is a vector (list) of floating point numbers. For example,
+                which is a vector (list) of floating-point numbers. For example,
                 the word “Car” can be represented using the following vector:
                 [0.3, 0.8, -0.9].
               </p>
@@ -63,7 +63,7 @@ export const HowItWorks = () => {
                 >
                   Neon
                 </a>{' '}
-                along with{' '}
+                with the{' '}
                 <a
                   className="focus-visible:border-gray-700 focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-100
             transition-colors outline-none rounded-md"
@@ -71,14 +71,14 @@ export const HowItWorks = () => {
                   rel="noopener noreferrer"
                   href="https://github.com/neondatabase/pg_embedding"
                 >
-                  pg_embedding
+                  pg_embedding extension
                 </a>
-                , an extension that makes it possible to store and retrieve
-                vector embeddings in Postgres
+                , which makes it possible to store and retrieve vector
+                embeddings in Postgres.
               </p>
               <p>
-                When a user submits a query, we convert it into a a vector
-                embedding and then find the 5 most similar results. Here is an
+                When a user submits a query, we convert it into a vector
+                embedding and find the 5 most similar results. Here is an
                 example query:
                 <pre className="font-mono text-[0.8rem]">
                   <code>{codeString}</code>
@@ -93,7 +93,7 @@ export const HowItWorks = () => {
                   rel="noopener noreferrer"
                   href="https://github.com/neondatabase/yc-idea-matcher"
                 >
-                  source code on GitHub
+                  source code on GitHub.
                 </a>
               </p>
             </div>
