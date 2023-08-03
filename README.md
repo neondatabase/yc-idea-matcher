@@ -13,7 +13,6 @@ The project is built using the following technologies:
 - [Vercel](https://vercel.com): deployment platform
 - [OpenAI API](https://openai.com): generating vector embeddings
 - [TailwindCSS](https://tailwindcss.com): Utility-first CSS framework
-- [Radix UI](https://radix-ui.com): unstyled, accessible UI component library
 - [Upstash Redis](https://upstash.com): serverless Redis for rate limiting
 - [Zod](https://zod.dev): TypeScript-first schema validation
 - [React Query](https://react-query.tanstack.com): data fetching and caching library
