@@ -5,6 +5,7 @@ import { Company } from '~/components/company';
 import { Hero } from '~/components/hero';
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
+import va from '@vercel/analytics';
 
 type FormValues = {
   idea: string;
@@ -19,6 +20,7 @@ export default function Home() {
 
   const { mutate, isLoading, data } = useMutation(
     async (values: FormValues) => {
+      va.track('Submit');
       const res = await fetch('/api/idea', {
         method: 'POST',
         body: JSON.stringify(values),
