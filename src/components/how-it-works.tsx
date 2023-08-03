@@ -19,10 +19,11 @@ export const HowItWorks = () => {
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
         <Drawer.Content
           className="z-10 bg-gray-300 flex flex-col rounded-t-[10px] h-[70%] mt-24 fixed bottom-0 left-0 right-0 focus-visible:border-gray-700 focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-100
-            transition-colors outline-none"
+            transition-colors outline-none "
         >
-          <div className="p-4 bg-gray-300 rounded-t-[10px] flex-1">
+          <div className="p-4 mb-5 bg-gray-300 rounded-t-[10px] flex-1 overflow-y-auto">
             <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-gray-1100 mb-8" />
+
             <div className="mx-auto prose prose-invert">
               <Drawer.Title className="font-medium mb-10 text-lg text-center">
                 How this app works
@@ -45,14 +46,12 @@ export const HowItWorks = () => {
                   https://api.ycombinator.com/v0.1/companies
                 </a>
               </p>
-
               <p>
                 Next, for each company description we generated an embedding,
                 which is a vector (list) of floating point numbers. For example,
                 the word “Car” can be represented using the following vector:
                 [0.3, 0.8, -0.9].
               </p>
-
               <p>
                 We then used{' '}
                 <a
@@ -85,7 +84,6 @@ export const HowItWorks = () => {
                   <code>{codeString}</code>
                 </pre>
               </p>
-
               <p>
                 You can find the{' '}
                 <a
