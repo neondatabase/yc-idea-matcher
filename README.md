@@ -1,6 +1,6 @@
 # YC idea matcher
 
-![Screenshot of the app UI](ui.png)
+![Screenshot of the app UI](https://i.imgur.com/rBS7xoL.png)
 
 This project allows you Submit your idea and get a list of similar ideas that YCombinator has invested in before.
 
