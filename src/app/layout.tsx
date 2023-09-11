@@ -48,7 +48,7 @@ export default function RootLayout({
               rel="noopener noreferrer"
               href="https://github.com/neondatabase/yc-idea-matcher"
             >
-              pg_embedding
+              pgvector
             </a>
           </p>
         </footer>
