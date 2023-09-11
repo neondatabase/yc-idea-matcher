@@ -53,6 +53,8 @@ export async function POST(request: NextRequest) {
   try {
     const embedding = await generateEmbeddings(idea);
 
+    console.log(embedding)
+
     const result = await sql(
       `SELECT id, name, "smallLogoUrl", website, "oneLiner", "longDescription", batch, url, status, industries FROM companies ORDER BY embedding::VECTOR <=> '[${embedding}]' LIMIT 5;`
     );
