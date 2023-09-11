@@ -7,7 +7,7 @@ This project allows you Submit your idea and get a list of similar ideas that YC
 The project is built using the following technologies:
 
 - [Neon](https://neon.tech): Serverless Postgres
-- [pg_embedding](https://github.com/neondatabase/pg_embedding): open-source Postgres extension for vector storage and similarity search
+- [pgvector](https://github.com/pgvector/pgvector): open-source Postgres extension for vector storage and similarity search
 - [Neon Serverless Driver](https://github.com/neondatabase/serverless)
 - [Next.js](https://nextjs.org): Fullstack framework for React
 - [Vercel](https://vercel.com): deployment platform
