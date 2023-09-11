@@ -69,9 +69,9 @@ export const HowItWorks = () => {
             transition-colors outline-none rounded-md"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://github.com/neondatabase/pg_embedding"
+                  href="https://github.com/pgvector/pgvector"
                 >
-                  pg_embedding
+                  pgvector
                 </a>
                 , which makes it possible to store and retrieve vector
                 embeddings in Postgres.
