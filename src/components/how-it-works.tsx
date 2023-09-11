@@ -4,7 +4,7 @@ import { Drawer } from 'vaul';
 
 export const HowItWorks = () => {
   const codeString =
-    'SELECT * FROM companies ORDER BY embedding <=> array[0.3, 0.8, -0.9] LIMIT 5';
+    `SELECT * FROM companies ORDER BY embedding <=> '[0.3, 0.8, -0.9]' LIMIT 5;`;
 
   const [open, setOpen] = useLocalStorage('show banner', true);
 
