@@ -12,7 +12,7 @@ async function createCompaniesTable() {
   const client = await pool.connect();
   try {
     await client.query(`
-      CREATE EXTENSION IF NOT EXISTS embedding;
+      CREATE EXTENSION IF NOT EXISTS vector;
       CREATE TABLE IF NOT EXISTS companies (
         id SERIAL PRIMARY KEY,
         name TEXT,
@@ -30,7 +30,7 @@ async function createCompaniesTable() {
         regions TEXT[],
         locations TEXT[],
         badges TEXT[],
-        embedding REAL[]
+        embedding VECTOR(1536)
       );
     `);
     console.log('Companies table created successfully');

@@ -4,7 +4,7 @@ import { Drawer } from 'vaul';
 
 export const HowItWorks = () => {
   const codeString =
-    'SELECT * FROM companies ORDER BY embedding <=> array[0.3, 0.8, -0.9] LIMIT 5';
+    `SELECT * FROM companies ORDER BY embedding <=> '[0.3, 0.8, -0.9]' LIMIT 5;`;
 
   const [open, setOpen] = useLocalStorage('show banner', true);
 
@@ -69,9 +69,9 @@ export const HowItWorks = () => {
             transition-colors outline-none rounded-md"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://github.com/neondatabase/pg_embedding"
+                  href="https://github.com/pgvector/pgvector"
                 >
-                  pg_embedding
+                  pgvector
                 </a>
                 , which makes it possible to store and retrieve vector
                 embeddings in Postgres.
