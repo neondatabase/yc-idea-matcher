@@ -22,7 +22,7 @@ The project is built using the following technologies:
 
 You will find a script called `generate-embeddings.ts` located in the root directory of this project. After running `npm run generate-embeddings`, the script does the following:
 
-1. It creates the database schema and installs the `pg_embedding` extension
+1. It creates the database schema and installs the `pgvector` extension
 2. It goes through the YCombinator API 'https://api.ycombinator.com/v0.1/companies?page=1' and gets all the companies
 3. For each company it generates embeddings using the long description and then stores the company data in the database.
   
@@ -31,4 +31,4 @@ You will find a script called `generate-embeddings.ts` located in the root direc
 The app itself is a Next.js app with an API route located at `/api/idea`. Whenever a user submits an idea, the following happens:
 
 1. The idea is sent to the OpenAI API to generate an embedding
-2. We then use pg_embedding to retrieve the top 3 most similar ideas
+2. We then use pgvector to retrieve the top 3 most similar ideas
